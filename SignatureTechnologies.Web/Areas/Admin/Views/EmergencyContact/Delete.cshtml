@@ -1,0 +1,53 @@
+﻿@model EmergencyContact
+<form method="post" asp-action="DeletePOST">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-1">
+            <h2 class="text-primary">Delete Job Information</h2>
+        </div>
+        <hr />
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3 col-6">
+            <label asp-for="EmployeeDetailId"></label>
+            <select asp-for="EmployeeDetailId" disabled asp-items="ViewBag.EmployeeDetailList" class="form-select">
+                <option disabled selected>@Model.EmployeeDetail.FullName</option>
+            </select>
+            <span asp-validation-for="EmployeeDetailId" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="FullName"></label>
+            <input asp-for="FullName" disabled class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" disabled class="form-control" rows="3" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Relationship"></label>
+            <input type="text" asp-for="Relationship" disabled class="form-control" />
+            <span asp-validation-for="Relationship" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Address"></label>
+            <input type="text" asp-for="Address" disabled class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+
+        </div>
+
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a class="btn btn-secondary" asp-controller="JobInformation" asp-action="Index" style="width:150px">Back To List</a>
+    </div>
+
+
+</form>
+@section scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}

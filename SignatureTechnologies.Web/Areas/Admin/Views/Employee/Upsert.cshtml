@@ -1,0 +1,105 @@
+﻿@model EmployeeDetail
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="Id" hidden />
+    <input asp-for="ImageUrl" hidden />
+
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-4 row col-12">
+                <div class="row pb-1">
+                    <h2 class="text-primary">@(Model.Id != 0 ? "Update" : "Create") Employee Detail</h2>
+                </div>
+                <hr />
+                <div asp-validation-summary="All"></div>
+                <div class="mb-3">
+                    <label asp-for="FullName"></label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Address"></label>
+                    <input asp-for="Address" class="form-control" rows="3" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="PhoneNumber"></label>
+                    <input type="number" asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="IdCard"></label>
+                    <input type="number" asp-for="IdCard" class="form-control" />
+                    <span asp-validation-for="IdCard" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="DOBirth"></label>
+                    <input type="datetime" asp-for="DOBirth" class="form-control" />
+                    <span asp-validation-for="DOBirth" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="MaritalStatus"></label>
+                    <input asp-for="MaritalStatus" class="form-control" />
+                    <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="EmailAddress"></label>
+                    <input type="email" asp-for="EmailAddress" class="form-control" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3 ">
+                    <label asp-for="ImageUrl"></label>
+                    <input type="file" id="uploadBox" name="file" asp-for="ImageUrl" class="form-control" />
+
+
+                </div>
+
+                <div class="col-12">
+                    @if (Model.Id != 0)
+                    {
+                        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+                    }
+
+                    else
+                    {
+                        <button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Create</button>
+                    }
+
+                    <a class="btn btn-danger" asp-controller="Employee" asp-action="Index" style="width:180px">Back To List</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 pt-4">
+
+            <img src="/@Model.ImageUrl" width="100%" style="border-radius:5px; border: 2px solid #bbb9b9" />
+        </div>
+    </div>
+
+
+
+
+</form>
+@section scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    <script>
+        function ValidateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please Upload an Image..!',
+                })
+                return false;
+            }
+            return true;
+        }
+    </script>
+}

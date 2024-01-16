@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProjectManagement>
+<partial name="_Notification" />
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="text-primary">Project Management List</h1>
+        </div>
+
+        <div class="col-6 text-end pt-2">
+            <a asp-controller="ProjectManagement" asp-action="Upsert" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create New Project Management</a>
+        </div>
+
+    </div>
+</div>
+<br />
+
+
+<table class="table table-border table-striped ">
+    <div class="text-end mb-3">
+        <lable>Search:</lable>
+        <input type="text" id="myInput" />
+    </div>
+    <thead id="SearchJob">
+        <tr>
+            <th>Project Name</th>
+            <th>Project Detail</th>
+            <th>Client Name</th>
+            <th>Status</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Completed Date</th>
+            <th>Completed By</th>
+
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="SearchJob">
+        @foreach (var obj in Model)
+        {
+            <tr class="ashar">
+                <td>@obj.ProjectName</td>
+                <td>@obj.ProjectDescription</td>
+                <td>@obj.ClientName</td>
+                <td>@obj.Status</td>
+                <td>@obj.StartDate</td>
+                <td>@obj.EndDate</td>
+                <td>@obj.CompleteDate</td>
+                <td>@obj.EmployeeDetail.FullName</td>
+
+                <td>
+                    <div class="w-50 btn-group" role="group">
+                        <a asp-controller="ProjectManagement" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i>Edit</a> |
+                        <a asp-controller="ProjectManagement" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2"><i class="bi bi-trash"></i>Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#SearchJob .ashar").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+}

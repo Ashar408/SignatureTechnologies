@@ -1,0 +1,38 @@
+﻿
+<partial name="_Notification" />
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="text-primary">Employee Detail List</h1>
+        </div>
+
+        <div class="col-6 text-end pt-2">
+            <a asp-controller="Employee" asp-action="Upsert" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create New Employee</a>
+        </div>
+
+    </div>
+</div>
+<br />
+
+
+<table class="table table-border table-striped " id="myTable">
+    <thead>
+        <tr>
+            <th>FullName</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>ID Card</th>
+            <th>DOB</th>
+            <th>Marital Status</th>
+            <th>Email Address</th>
+
+
+            <th>Action</th>
+        </tr>
+    </thead>
+
+
+</table>
+@section Scripts{
+    <script src="~/js/Employee.js"></script>
+}

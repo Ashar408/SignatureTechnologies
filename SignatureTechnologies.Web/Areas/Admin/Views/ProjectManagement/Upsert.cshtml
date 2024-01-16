@@ -1,0 +1,85 @@
+﻿@model ProjectManagement
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="Id" hidden />
+
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-4 row col-12">
+                <div class="row pb-1">
+                    <h2 class="text-primary">@(Model.Id != 0 ? "Update" : "Create") Project Management</h2>
+                </div>
+                <hr />
+                <div asp-validation-summary="All"></div>
+                <div class="mb-3 col-6">
+                    <label asp-for="EmployeeDetailId"></label>
+                    <select asp-for="EmployeeDetailId" asp-items="ViewBag.EmployeeDetailList" class="form-select">
+                        <option disabled selected>--Select Employee--</option>
+                    </select>
+                    <span asp-validation-for="EmployeeDetailId" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ProjectName"></label>
+                    <input asp-for="ProjectName" class="form-control" />
+                    <span asp-validation-for="ProjectName" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ProjectDescription"></label>
+                    <textarea asp-for="ProjectDescription" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="ProjectDescription" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="ClientName"></label>
+                    <input type="text" asp-for="ClientName" class="form-control" />
+                    <span asp-validation-for="ClientName" class="text-danger"></span>
+
+                </div> 
+                <div class="mb-3 col-6">
+                    <label asp-for="StartDate"></label>
+                    <input type="date" asp-for="StartDate" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="EndDate"></label>
+                    <input type="date" asp-for="EndDate" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+
+                </div> 
+                @if (Model.Id !=0)
+                {
+                    <div class="mb-3 col-6">
+                        <label asp-for="CompleteDate"></label>
+                    <input type="date" asp-for="CompleteDate" class="form-control" />
+                    <span asp-validation-for="CompleteDate" class="text-danger"></span>
+
+                </div>
+                }
+                
+
+
+
+                <div class="col-12">
+                    @if (Model.Id != 0)
+                    {
+                        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+                    }
+
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+                    }
+
+                    <a class="btn btn-danger" asp-controller="JobInformation" asp-action="Index" style="width:180px">Back To List</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</form>

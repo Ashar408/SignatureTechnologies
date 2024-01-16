@@ -1,0 +1,53 @@
+﻿@model JobInformation
+<form method="post" asp-action="DeletePOST">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-1">
+            <h2 class="text-primary">Delete Job Information</h2>
+        </div>
+        <hr />
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3 col-6">
+            <label asp-for="EmployeeDetailId"></label>
+            <select asp-for="EmployeeDetailId" disabled  asp-items="ViewBag.EmployeeDetailList" class="form-select">
+                <option disabled selected>@Model.EmployeeDetail.FullName</option>
+            </select>
+            <span asp-validation-for="EmployeeDetailId" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" disabled class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="Department"></label>
+            <input asp-for="Department" disabled class="form-control" rows="3" />
+            <span asp-validation-for="Department" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="StartDate"></label>
+            <input type="date" asp-for="StartDate" disabled class="form-control" />
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="WorkLocation"></label>
+            <input type="text" asp-for="WorkLocation" disabled class="form-control" />
+            <span asp-validation-for="WorkLocation" class="text-danger"></span>
+
+        </div>
+
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a class="btn btn-secondary" asp-controller="JobInformation" asp-action="Index" style="width:150px">Back To List</a>
+    </div>
+
+
+</form>
+@section scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}

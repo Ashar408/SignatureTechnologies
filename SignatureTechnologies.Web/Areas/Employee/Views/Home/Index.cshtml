@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center " style="margin-bottom:80px;">
+    <h1 class="display-4">Welcome Ashar</h1>
+   
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12 d-inline-flex justify-content-between">
+        <div class="col-md-3">
+            <div class="card bg-danger text-white">
+                <div class="card-header">
+                    Signature Technologies
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Employees</h5>
+                    <p class="card-text">10</p>
+                    <a asp-area="Admin" asp-controller="Employee" asp-action="Index" class="btn btn-danger">see all --></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-header">
+                    Signature Technologies
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Projects</h5>
+                    <p class="card-text">11</p>
+                    <a asp-area="Admin" asp-controller="ProjectManagement" asp-action="Index" class="btn btn-success">see all --></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-header">
+                    Signature Technologies
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Expenses</h5>
+                    <p class="card-text ">10000</p>
+                    <a asp-area="Admin" asp-controller="EmergencyContact" asp-action="Index" class="btn btn-primary">see all --></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h1 class="mt-4">Recent Projects</h1>
+<table class="table table-border table-striped mt-4" id="myTable">
+    <thead>
+        <tr>
+            <th>FullName</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>ID Card</th>
+            <th>DOB</th>
+            <th>Marital Status</th>
+            <th>Email Address</th>
+
+
+            <th>Action</th>
+        </tr>
+    </thead>
+
+
+</table>

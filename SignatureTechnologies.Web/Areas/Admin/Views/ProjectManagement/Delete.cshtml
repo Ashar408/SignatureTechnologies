@@ -1,0 +1,68 @@
+﻿@model ProjectManagement
+<form method="post" asp-action="DeletePOST">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-1">
+            <h2 class="text-primary">Delete Job Information</h2>
+        </div>
+        <hr />
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3 col-6">
+            <label asp-for="EmployeeDetailId"></label>
+            <select asp-for="EmployeeDetailId" disabled asp-items="ViewBag.EmployeeDetailList" class="form-select">
+                <option disabled selected>@Model.EmployeeDetail.FullName</option>
+            </select>
+            <span asp-validation-for="EmployeeDetailId" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProjectName"></label>
+            <input disabled asp-for="ProjectName" class="form-control" />
+            <span asp-validation-for="ProjectName" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProjectDescription"></label>
+            <textarea disabled asp-for="ProjectDescription" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="ProjectDescription" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="ClientName"></label>
+            <input disabled type="text" asp-for="ClientName" class="form-control" />
+            <span asp-validation-for="ClientName" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="StartDate"></label>
+            <input disabled type="date" asp-for="StartDate" class="form-control" />
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="EndDate"></label>
+            <input disabled type="date" asp-for="EndDate" class="form-control" />
+            <span asp-validation-for="EndDate" class="text-danger"></span>
+
+        </div>
+        @if (Model.Id != 0)
+        {
+            <div class="mb-3 col-6">
+                <label asp-for="CompleteDate"></label>
+                <input disabled type="date" asp-for="CompleteDate" class="form-control" />
+                <span asp-validation-for="CompleteDate" class="text-danger"></span>
+
+            </div>
+        }
+
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a class="btn btn-secondary" asp-controller="JobInformation" asp-action="Index" style="width:150px">Back To List</a>
+    </div>
+
+
+</form>
+@section scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
