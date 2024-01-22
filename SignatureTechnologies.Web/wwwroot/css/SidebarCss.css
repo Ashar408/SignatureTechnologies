@@ -33,6 +33,7 @@ html {
 
 #sidebar-wrapper {
     z-index: 1000;
+    top:20px;
     left: 220px;
     width: 0;
     height: 100%;
@@ -254,7 +255,7 @@ a[href*="#followme"]::before {
 
 .hamburger {
     position: fixed;
-    top: 20px;
+    top: 50px;
     z-index: 999;
     display: block;
     width: 32px;

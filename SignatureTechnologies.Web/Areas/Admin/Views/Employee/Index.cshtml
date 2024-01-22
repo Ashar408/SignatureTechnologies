@@ -2,11 +2,11 @@
 <partial name="_Notification" />
 <div class="container p-3">
     <div class="row pt-4">
-        <div class="col-6">
+        <div class="col-md-6">
             <h1 class="text-primary">Employee Detail List</h1>
         </div>
 
-        <div class="col-6 text-end pt-2">
+        <div class="col-md-6 pt-2 text-lg-end">
             <a asp-controller="Employee" asp-action="Upsert" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create New Employee</a>
         </div>
 
@@ -14,7 +14,7 @@
 </div>
 <br />
 
-
+<div class="table-responsive">
 <table class="table table-border table-striped " id="myTable">
     <thead>
         <tr>
@@ -33,6 +33,7 @@
 
 
 </table>
+</div>
 @section Scripts{
     <script src="~/js/Employee.js"></script>
 }
